@@ -9,12 +9,14 @@ import UIKit
 
 class StockCell: UITableViewCell {
     
+    // MARK: - Outlets
     @IBOutlet weak var companyNameLabel: UILabel!
     @IBOutlet weak var symbolLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var changePriceLabel: UILabel!
     @IBOutlet weak var companyLogoImageView: UIImageView!
     
+    // MARK: - Public method
     func configure(with stock: Stock) {
         changeLabelTextColor(for: stock.change)
         
@@ -29,6 +31,7 @@ class StockCell: UITableViewCell {
     
 }
 
+// MARK: - Private func
 extension StockCell {
     func changeLabelTextColor(for resultChangePrice: Double) {
         
