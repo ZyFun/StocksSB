@@ -7,6 +7,10 @@
 
 class DataManager {
     
+    static let shared = DataManager()
+    
+    let testCompany = ["Apple", "Microsoft"]
+    
     let company = [
         "Apple": "AAPL",
         "Microsoft": "MSFT",
@@ -14,4 +18,6 @@ class DataManager {
         "Amazon": "AMZN",
         "Facebook": "FB",
     ]
+    
+    private init(){}
 }
