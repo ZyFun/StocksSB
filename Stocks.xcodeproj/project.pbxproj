@@ -22,7 +22,7 @@
 		2C61372D26FE016C00F07AFA /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		2C61373026FE050D00F07AFA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2C61373426FE072A00F07AFA /* StockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewController.swift; sourceTree = "<group>"; };
-		2C81140026FE010200A927E2 /* Stock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C81140026FE010200A927E2 /* Stocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C81140326FE010200A927E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C81140526FE010200A927E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2C81140A26FE010200A927E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		2C8113F726FE010200A927E2 = {
 			isa = PBXGroup;
 			children = (
-				2C81140226FE010200A927E2 /* Stock */,
+				2C81140226FE010200A927E2 /* Stocks */,
 				2C81140126FE010200A927E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,12 +88,12 @@
 		2C81140126FE010200A927E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C81140026FE010200A927E2 /* Stock.app */,
+				2C81140026FE010200A927E2 /* Stocks.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2C81140226FE010200A927E2 /* Stock */ = {
+		2C81140226FE010200A927E2 /* Stocks */ = {
 			isa = PBXGroup;
 			children = (
 				2C61372C26FE015200F07AFA /* Models */,
@@ -103,7 +103,7 @@
 				2C95D9C526FE0C4500481796 /* Supports */,
 				2C95D9C626FE0C5100481796 /* Resources */,
 			);
-			path = Stock;
+			path = Stocks;
 			sourceTree = "<group>";
 		};
 		2C95D9C526FE0C4500481796 /* Supports */ = {
@@ -127,9 +127,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C8113FF26FE010200A927E2 /* Stock */ = {
+		2C8113FF26FE010200A927E2 /* Stocks */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C81141426FE010400A927E2 /* Build configuration list for PBXNativeTarget "Stock" */;
+			buildConfigurationList = 2C81141426FE010400A927E2 /* Build configuration list for PBXNativeTarget "Stocks" */;
 			buildPhases = (
 				2C8113FC26FE010200A927E2 /* Sources */,
 				2C8113FD26FE010200A927E2 /* Frameworks */,
@@ -139,9 +139,9 @@
 			);
 			dependencies = (
 			);
-			name = Stock;
+			name = Stocks;
 			productName = Stock;
-			productReference = 2C81140026FE010200A927E2 /* Stock.app */;
+			productReference = 2C81140026FE010200A927E2 /* Stocks.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -159,7 +159,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C8113FB26FE010200A927E2 /* Build configuration list for PBXProject "Stock" */;
+			buildConfigurationList = 2C8113FB26FE010200A927E2 /* Build configuration list for PBXProject "Stocks" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -172,7 +172,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C8113FF26FE010200A927E2 /* Stock */,
+				2C8113FF26FE010200A927E2 /* Stocks */,
 			);
 		};
 /* End PBXProject section */
@@ -351,7 +351,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B66N983M7Q;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Stock/Supports/Info.plist;
+				INFOPLIST_FILE = Stocks/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -362,7 +362,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.zyfunphoto.Stock;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.zyfunphoto.Stocks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -379,7 +379,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B66N983M7Q;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Stock/Supports/Info.plist;
+				INFOPLIST_FILE = Stocks/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -390,7 +390,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.zyfunphoto.Stock;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.zyfunphoto.Stocks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -401,7 +401,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C8113FB26FE010200A927E2 /* Build configuration list for PBXProject "Stock" */ = {
+		2C8113FB26FE010200A927E2 /* Build configuration list for PBXProject "Stocks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C81141226FE010400A927E2 /* Debug */,
@@ -410,7 +410,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C81141426FE010400A927E2 /* Build configuration list for PBXNativeTarget "Stock" */ = {
+		2C81141426FE010400A927E2 /* Build configuration list for PBXNativeTarget "Stocks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C81141526FE010400A927E2 /* Debug */,

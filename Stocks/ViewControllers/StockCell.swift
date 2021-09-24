@@ -1,6 +1,6 @@
 //
 //  StockCell.swift
-//  Stock
+//  Stocks
 //
 //  Created by Дмитрий Данилин on 24.09.2021.
 //
