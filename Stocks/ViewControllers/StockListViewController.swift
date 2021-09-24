@@ -58,6 +58,7 @@ extension StockListViewController {
         }
         
     }
+    
 }
 
 // MARK: - Network requests
