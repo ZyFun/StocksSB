@@ -10,21 +10,4 @@ struct Stock: Decodable {
     let symbol: String
     let latestPrice: Double
     let change: Double
-    
-    static func getStock() -> [Stock] {
-        [
-            Stock(
-                companyName: "Apple",
-                symbol: "AAPL",
-                latestPrice: 146.15,
-                change: -0.68
-            ),
-            Stock(
-                companyName: "Microsoft",
-                symbol: "MSFT",
-                latestPrice: 297.93,
-                change: -1.63
-            )
-        ]
-    }
 }
