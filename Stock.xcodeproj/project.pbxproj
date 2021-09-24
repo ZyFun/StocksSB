@@ -93,12 +93,12 @@
 		2C81140226FE010200A927E2 /* Stock */ = {
 			isa = PBXGroup;
 			children = (
+				2C61372C26FE015200F07AFA /* Models */,
 				2C61373326FE06FB00F07AFA /* ViewControllers */,
 				2C61373226FE051600F07AFA /* Services */,
-				2C61372C26FE015200F07AFA /* Models */,
+				2C61373626FE09E500F07AFA /* Storyboards */,
 				2C81140326FE010200A927E2 /* AppDelegate.swift */,
 				2C81140526FE010200A927E2 /* SceneDelegate.swift */,
-				2C61373626FE09E500F07AFA /* Storyboards */,
 				2C81140C26FE010400A927E2 /* Assets.xcassets */,
 				2C81141126FE010400A927E2 /* Info.plist */,
 			);
