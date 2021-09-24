@@ -9,14 +9,12 @@ class DataManager {
     
     static let shared = DataManager()
     
-    let testCompany = ["Apple", "Microsoft"]
-    
-    let company = [
-        "Apple": "AAPL",
-        "Microsoft": "MSFT",
-        "Google": "GOOG",
-        "Amazon": "AMZN",
-        "Facebook": "FB",
+    let companySymbols = [
+        "AAPL",
+        "MSFT",
+        "GOOG",
+        "AMZN",
+        "FB",
     ]
     
     private init(){}
