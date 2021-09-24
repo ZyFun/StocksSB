@@ -50,6 +50,7 @@ extension StockListViewController {
         for symbol in DataManager.shared.companySymbols {
             fetchStock(for: symbol)
         }
+        
     }
 }
 
@@ -75,8 +76,10 @@ extension StockListViewController {
             } catch let error {
                 print(error)
             }
+            
         }
         
         dataTask.resume()
+        
     }
 }
