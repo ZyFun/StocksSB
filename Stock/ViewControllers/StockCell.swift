@@ -16,6 +16,9 @@ class StockCell: UITableViewCell {
     
     func configure(with stock: Stock) {
         companyNameLabel.text = stock.companyName
+        symbolLabel.text = stock.symbol
+        priceLabel.text = String(stock.latestPrice)
+        changePriceLabel.text = String(stock.change)
     }
     
 
