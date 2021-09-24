@@ -18,12 +18,12 @@ class StockCell: UITableViewCell {
     
     // MARK: - Public method
     func configure(with stock: Stock) {
-        changeLabelTextColor(getting: stock.change)
+        changeLabelTextColor(getting: stock.change ?? 0)
         
         companyNameLabel.text = stock.companyName
         symbolLabel.text = stock.symbol
-        priceLabel.text = String(stock.latestPrice)
-        changePriceLabel.text = String(stock.change)
+        priceLabel.text = String(stock.latestPrice ?? 0)
+        changePriceLabel.text = String(stock.change ?? 0)
         
         fetchLogo(for: stock.logoUrl)
         

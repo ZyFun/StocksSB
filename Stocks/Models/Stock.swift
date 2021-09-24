@@ -6,12 +6,12 @@
 //
 
 struct Stock: Decodable {
-    let companyName: String
-    let symbol: String
-    let latestPrice: Double
-    let change: Double
+    let companyName: String?
+    let symbol: String?
+    let latestPrice: Double?
+    let change: Double?
     
     var logoUrl: String {
-        "https://storage.googleapis.com/iex/api/logos/\(symbol).png"
+        "https://storage.googleapis.com/iex/api/logos/\(symbol ?? "").png"
     }
 }
