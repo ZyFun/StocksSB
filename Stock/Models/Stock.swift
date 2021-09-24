@@ -10,4 +10,15 @@ struct Stock {
     let symbol: String
     let latestPrice: Double
     let change: Double
+    
+    static func getStock() -> [Stock] {
+        [
+            Stock(
+                companyName: DataManager.shared.testCompany.randomElement() ?? "",
+                symbol: "AAPL",
+                latestPrice: 208,
+                change: 10
+            )
+        ]
+    }
 }
