@@ -13,6 +13,8 @@ class StockListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchStock()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -82,4 +84,28 @@ class StockListViewController: UITableViewController {
     }
     */
 
+}
+
+extension StockListViewController {
+    // TODO: В дальнейшем сделать метод с получением свойств (for symbol: String), чтобы было возможно отобразить различные компании
+    private func fetchStock() {
+        let token = "pk_92287e65be054541b0a167b0ac4fa0aa"
+        guard let url = URL(string: "https://cloud.iexapis.com/stable/stock/AAPL/quote?token=\(token)") else { return }
+        
+        let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                print(error?.localizedDescription ?? "No error description")
+                return
+            }
+            
+            do {
+                // Автоматически парсим json и создаём экземпляр модели на основе его данных
+                let stock = try JSONDecoder().decode(Stock.self, from: data)
+                print(stock)
+            } catch let error {
+                print(error)
+            }
+        }
+        dataTask.resume()
+    }
 }
