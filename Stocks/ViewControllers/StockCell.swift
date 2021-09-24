@@ -13,6 +13,7 @@ class StockCell: UITableViewCell {
     @IBOutlet weak var symbolLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var changePriceLabel: UILabel!
+    @IBOutlet weak var companyLogoImageView: UIImageView!
     
     func configure(with stock: Stock) {
         changeLabelTextColor(for: stock.change)
@@ -22,8 +23,8 @@ class StockCell: UITableViewCell {
         priceLabel.text = String(stock.latestPrice)
         changePriceLabel.text = String(stock.change)
         
-        // TODO: Добавить отображение логотипа компании
-        let _ = ""
+        fetchLogo(using: stock.symbol)
+        
     }
     
 }
@@ -39,6 +40,16 @@ extension StockCell {
         default:
             changePriceLabel.textColor = .label
         }
+    }
+    
+    private func fetchLogo(using symbol: String) {
+        guard let url = URL(string: "https://storage.googleapis.com/iex/api/logos/\(symbol).png") else { return }
+        guard let imageData = try? Data(contentsOf: url) else { return }
+        
+        DispatchQueue.main.async {
+            self.companyLogoImageView.image = UIImage(data: imageData)
+        }
         
     }
+    
 }
