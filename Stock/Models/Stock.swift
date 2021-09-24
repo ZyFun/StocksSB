@@ -14,10 +14,16 @@ struct Stock {
     static func getStock() -> [Stock] {
         [
             Stock(
-                companyName: DataManager.shared.testCompany.randomElement() ?? "",
+                companyName: "Apple",
                 symbol: "AAPL",
-                latestPrice: 208,
-                change: 10
+                latestPrice: 146.15,
+                change: -0.68
+            ),
+            Stock(
+                companyName: "Microsoft",
+                symbol: "MSFT",
+                latestPrice: 297.93,
+                change: -1.63
             )
         ]
     }
