@@ -15,6 +15,8 @@ class StockListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rowHeight = 150
+        
         activityIndicator.hidesWhenStopped = true
         
         getStocks()
