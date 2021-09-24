@@ -75,11 +75,12 @@ extension StockListViewController {
             do {
                 let stock = try JSONDecoder().decode(Stock.self, from: data)
                 self.stocks.append(stock)
-                print(stock)
+                
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     self.tableView.reloadData()
                 }
+                
             } catch let error {
                 print(error)
             }
