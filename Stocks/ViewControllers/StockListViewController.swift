@@ -9,9 +9,13 @@ import UIKit
 
 class StockListViewController: UITableViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    // MARK: - Private properties
     private var stocks: [Stock] = []
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +47,8 @@ class StockListViewController: UITableViewController {
     }
 
 }
+
+// MARK: - Private method
 extension StockListViewController {
     private func getStocks() {
         activityIndicator.startAnimating()
@@ -54,6 +60,7 @@ extension StockListViewController {
     }
 }
 
+// MARK: - Network requests
 extension StockListViewController {
     private func fetchStock(for symbol: String) {
         let token = "pk_92287e65be054541b0a167b0ac4fa0aa"
