@@ -18,7 +18,7 @@ class StockCell: UITableViewCell {
     
     // MARK: - Public method
     func configure(with stock: Stock) {
-        changeLabelTextColor(for: stock.change)
+        changeLabelTextColor(getting: stock.change)
         
         companyNameLabel.text = stock.companyName
         symbolLabel.text = stock.symbol
@@ -33,8 +33,7 @@ class StockCell: UITableViewCell {
 
 // MARK: - Private func
 extension StockCell {
-    func changeLabelTextColor(for resultChangePrice: Double) {
-        
+    private func changeLabelTextColor(getting resultChangePrice: Double) {
         switch resultChangePrice {
         case _ where resultChangePrice < 0:
             changePriceLabel.textColor = .systemRed
