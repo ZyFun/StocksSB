@@ -9,12 +9,12 @@ import UIKit
 
 class StockListViewController: UITableViewController {
     
-    var stocks: [Stock] = Stock.getStock()
+    private var stocks: [Stock] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchStock()
+        getStocks()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -85,12 +85,18 @@ class StockListViewController: UITableViewController {
     */
 
 }
+extension StockListViewController {
+    private func getStocks() {
+        for symbol in DataManager.shared.companySymbols {
+            fetchStock(for: symbol)
+        }
+    }
+}
 
 extension StockListViewController {
-    // TODO: В дальнейшем сделать метод с получением свойств (for symbol: String), чтобы было возможно отобразить различные компании
-    private func fetchStock() {
+    private func fetchStock(for symbol: String) {
         let token = "pk_92287e65be054541b0a167b0ac4fa0aa"
-        guard let url = URL(string: "https://cloud.iexapis.com/stable/stock/AAPL/quote?token=\(token)") else { return }
+        guard let url = URL(string: "https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(token)") else { return }
         
         let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
@@ -101,11 +107,16 @@ extension StockListViewController {
             do {
                 // Автоматически парсим json и создаём экземпляр модели на основе его данных
                 let stock = try JSONDecoder().decode(Stock.self, from: data)
+                self.stocks.append(stock)
                 print(stock)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             } catch let error {
                 print(error)
             }
         }
+        
         dataTask.resume()
     }
 }
