@@ -65,6 +65,15 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		2C61373626FE09E500F07AFA /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2C81140926FE010200A927E2 /* Main.storyboard */,
+				2C81140E26FE010400A927E2 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		2C8113F726FE010200A927E2 = {
 			isa = PBXGroup;
 			children = (
@@ -89,9 +98,8 @@
 				2C61372C26FE015200F07AFA /* Models */,
 				2C81140326FE010200A927E2 /* AppDelegate.swift */,
 				2C81140526FE010200A927E2 /* SceneDelegate.swift */,
-				2C81140926FE010200A927E2 /* Main.storyboard */,
+				2C61373626FE09E500F07AFA /* Storyboards */,
 				2C81140C26FE010400A927E2 /* Assets.xcassets */,
-				2C81140E26FE010400A927E2 /* LaunchScreen.storyboard */,
 				2C81141126FE010400A927E2 /* Info.plist */,
 			);
 			path = Stock;
