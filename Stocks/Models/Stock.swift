@@ -10,8 +10,4 @@ struct Stock: Decodable {
     let symbol: String?
     let latestPrice: Double?
     let change: Double?
-    
-    var logoUrl: String {
-        "https://storage.googleapis.com/iex/api/logos/\(symbol ?? "").png"
-    }
 }

@@ -25,7 +25,7 @@ class StockCell: UITableViewCell {
         priceLabel.text = String(stock.latestPrice ?? 0)
         changePriceLabel.text = String(stock.change ?? 0)
         
-        fetchLogo(for: stock.logoUrl)
+        fetchLogo(using: stock.symbol ?? "")
         
     }
     
@@ -44,9 +44,9 @@ extension StockCell {
         }
     }
     
-    private func fetchLogo(for symbol: String) {
+    private func fetchLogo(using symbol: String) {
         DispatchQueue.global().async {
-            guard let url = URL(string: symbol) else { return }
+            guard let url = URL(string: "https://storage.googleapis.com/iex/api/logos/\(symbol).png") else { return }
             guard let imageData = try? Data(contentsOf: url) else { return }
             
             DispatchQueue.main.async {
