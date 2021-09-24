@@ -9,10 +9,13 @@ import UIKit
 
 class StockListViewController: UITableViewController {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var stocks: [Stock] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicator.hidesWhenStopped = true
         
         getStocks()
 
@@ -87,6 +90,8 @@ class StockListViewController: UITableViewController {
 }
 extension StockListViewController {
     private func getStocks() {
+        activityIndicator.startAnimating()
+        
         for symbol in DataManager.shared.companySymbols {
             fetchStock(for: symbol)
         }
@@ -105,11 +110,11 @@ extension StockListViewController {
             }
             
             do {
-                // Автоматически парсим json и создаём экземпляр модели на основе его данных
                 let stock = try JSONDecoder().decode(Stock.self, from: data)
                 self.stocks.append(stock)
                 print(stock)
                 DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
                     self.tableView.reloadData()
                 }
             } catch let error {
