@@ -44,7 +44,6 @@ extension StockCell {
         }
     }
     
-    // TODO: Убрать в NetworkManager
     private func fetchLogo(using symbol: String) {
         DispatchQueue.global().async {
             guard let url = URL(string: "https://storage.googleapis.com/iex/api/logos/\(symbol).png") else { return }
