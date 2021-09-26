@@ -51,44 +51,22 @@ class StockListViewController: UITableViewController {
 // MARK: - Private method
 extension StockListViewController {
     private func getStocks() {
+        let token = "pk_92287e65be054541b0a167b0ac4fa0aa"
+        
         activityIndicator.startAnimating()
         
-        DataManager.shared.companySymbols.forEach { symbol in
-            fetchStock(for: symbol)
-        }
-        
-    }
-    
-}
-
-// MARK: - Network requests
-extension StockListViewController {
-    private func fetchStock(for symbol: String) {
-        let token = "pk_92287e65be054541b0a167b0ac4fa0aa"
-        guard let url = URL(string: "https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(token)") else { return }
-        
-        let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
+        DataManager.shared.companySymbols.forEach { [weak self] symbol in
+            let stockUrlString = "https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(token)"
             
-            do {
-                let stock = try JSONDecoder().decode(Stock.self, from: data)
-                self.stocks.append(stock)
+            NetworkDataFetcher.shared.fetchStock(urlString: stockUrlString) { stock in
+                self?.stocks.append(stock)
                 
                 DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
-                    self.tableView.reloadData()
+                    self?.activityIndicator.stopAnimating()
+                    self?.tableView.reloadData()
                 }
                 
-            } catch let error {
-                print(error)
             }
-            
         }
-        
-        dataTask.resume()
-        
     }
 }
