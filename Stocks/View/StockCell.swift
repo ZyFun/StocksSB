@@ -25,7 +25,7 @@ class StockCell: UITableViewCell {
         priceLabel.text = String(stock.latestPrice ?? 0)
         changePriceLabel.text = String(stock.change ?? 0)
         
-        fetchLogo(using: stock.symbol ?? "")
+        getLogo(using: stock.symbol ?? "")
         
     }
     
@@ -44,17 +44,17 @@ extension StockCell {
         }
     }
     
-    private func fetchLogo(using symbol: String) {
-        DispatchQueue.global().async {
-            guard let url = URL(string: "https://storage.googleapis.com/iex/api/logos/\(symbol).png") else { return }
-            guard let imageData = try? Data(contentsOf: url) else { return }
-            
-            DispatchQueue.main.async {
-                self.companyLogoImageView.image = UIImage(data: imageData)
-            }
-            
-        }
+    private func getLogo(using symbol: String) {
+        let imageUrlString = "https://storage.googleapis.com/iex/api/logos/\(symbol).png"
         
+        DispatchQueue.global().async {
+            NetworkDataFetcher.shared.fetchLogo(urlString: imageUrlString) { [weak self] imageData in
+                
+                DispatchQueue.main.async {
+                    self?.companyLogoImageView.image = UIImage(data: imageData)
+                }
+                
+            }
+        }
     }
-    
 }

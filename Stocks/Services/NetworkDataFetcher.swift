@@ -27,6 +27,18 @@ class NetworkDataFetcher {
         }
     }
     
+    func fetchLogo(urlString: String, response: @escaping (Data) -> Void) {
+        NetworkService.shared.request(urlString: urlString) { result in
+            switch result {
+            case .success(let data):
+                response(data)
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+    }
+    
     private init(){}
     
 }
