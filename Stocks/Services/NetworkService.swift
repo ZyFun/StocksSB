@@ -28,4 +28,5 @@ class NetworkService {
     }
     
     private init(){}
+    
 }
