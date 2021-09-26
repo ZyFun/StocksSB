@@ -53,7 +53,7 @@ extension StockListViewController {
     private func getStocks() {
         activityIndicator.startAnimating()
         
-        for symbol in DataManager.shared.companySymbols {
+        DataManager.shared.companySymbols.forEach { symbol in
             fetchStock(for: symbol)
         }
         
