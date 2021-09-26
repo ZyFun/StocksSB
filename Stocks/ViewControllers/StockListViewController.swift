@@ -25,8 +25,6 @@ class StockListViewController: UITableViewController {
         
         getStocks()
         
-        // TODO: Добавить кнопку обновления данных
-        // TODO: Добавить алерт контроллер с кнопкой обновления данных при отсутствии сети или отменой с остановкой анимации индикатора.
     }
 
     // MARK: - Table view data source
