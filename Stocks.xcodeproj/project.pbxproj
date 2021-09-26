@@ -77,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				2C61373426FE072A00F07AFA /* StockListViewController.swift */,
-				2C30C2182700E60E004605FD /* View */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -112,6 +111,7 @@
 			children = (
 				2C61372C26FE015200F07AFA /* Models */,
 				2C61373326FE06FB00F07AFA /* ViewControllers */,
+				2C30C2182700E60E004605FD /* View */,
 				2C61373226FE051600F07AFA /* Services */,
 				2C61373626FE09E500F07AFA /* Storyboards */,
 				2C95D9C526FE0C4500481796 /* Supports */,
