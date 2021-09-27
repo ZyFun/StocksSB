@@ -25,6 +25,8 @@ class StockListViewController: UITableViewController {
         
         getStocks()
         
+        // TODO: Добавить кнопку обновления данных
+        // TODO: Добавить алерт контроллер с кнопкой обновления данных при отсутствии сети или отменой с остановкой анимации индикатора.
     }
 
     // MARK: - Table view data source
@@ -51,15 +53,17 @@ class StockListViewController: UITableViewController {
 
 // MARK: - Private method
 extension StockListViewController {
+    // TODO: Вывести алерт при отсутствии сети
     private func getStocks() {
         let token = "pk_92287e65be054541b0a167b0ac4fa0aa"
         
         activityIndicator.startAnimating()
         
-        DataManager.shared.companySymbols.forEach { [weak self] symbol in
+        // TODO: Сделать так, чтобы при отсутствии интернета, цикл завершался
+        DataManager.shared.companySymbols.forEach { symbol in
             let stockUrlString = "https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(token)"
             
-            NetworkDataFetcher.shared.fetchStock(urlString: stockUrlString) { stock in
+            NetworkDataFetcher.shared.fetchStock(urlString: stockUrlString) { [weak self] stock in
                 self?.stocks.append(stock)
                 
                 DispatchQueue.main.async {

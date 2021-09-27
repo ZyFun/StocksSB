@@ -15,14 +15,17 @@ class NetworkService {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             
-            if let error = error {
-                print(error)
+            if let data = data,
+               (response as? HTTPURLResponse)?.statusCode == 200,
+               error == nil {
+                completion(.success(data))
+            } else {
+                guard let error = error else { return }
                 completion(.failure(error))
+                print(error.localizedDescription + "#www")
                 return
             }
             
-            guard let data = data else { return }
-            completion(.success(data))
         }.resume()
         
     }
