@@ -98,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				2C81140226FE010200A927E2 /* Stocks */,
+				2CEC71A627021BBE00C63C74 /* Screenshots */,
 				2C7AE85127021CD7006D5E51 /* README.md */,
 				2C81140126FE010200A927E2 /* Products */,
 			);
@@ -121,7 +122,6 @@
 				2C61373626FE09E500F07AFA /* Storyboards */,
 				2C95D9C526FE0C4500481796 /* Supports */,
 				2C95D9C626FE0C5100481796 /* Resources */,
-				2CEC71A627021BBE00C63C74 /* Screenshots */,
 			);
 			path = Stocks;
 			sourceTree = "<group>";
