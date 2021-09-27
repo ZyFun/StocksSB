@@ -47,14 +47,13 @@ extension StockCell {
     private func getLogo(using symbol: String) {
         let imageUrlString = "https://storage.googleapis.com/iex/api/logos/\(symbol).png"
         
-        DispatchQueue.global().async {
-            NetworkDataFetcher.shared.fetchLogo(urlString: imageUrlString) { [weak self] imageData in
-                
-                DispatchQueue.main.async {
-                    self?.companyLogoImageView.image = UIImage(data: imageData)
-                }
-                
+        
+        NetworkDataFetcher.shared.fetchLogo(urlString: imageUrlString) { [weak self] imageData in
+            
+            DispatchQueue.main.async {
+                self?.companyLogoImageView.image = UIImage(data: imageData)
             }
+            
         }
     }
 }
