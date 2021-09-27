@@ -11,7 +11,12 @@ class NetworkService {
     static let shared = NetworkService()
     
     func request(urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        guard let url = URL(string: urlString) else { return }
+        guard let url = URL(string: urlString) else {
+            //TODO: С помощью Result вернуть сбда ошибку, создав кейс ошибок в менеджере сети. Этот кейс нужно подписать под протокол error, и его указать в блоке ошибок вмето Error
+//            completion(.success(.invalidURL))
+            return
+            
+        }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             
