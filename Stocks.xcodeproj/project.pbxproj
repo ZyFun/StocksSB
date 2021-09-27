@@ -97,8 +97,8 @@
 		2C8113F726FE010200A927E2 = {
 			isa = PBXGroup;
 			children = (
-				2C7AE85127021CD7006D5E51 /* README.md */,
 				2C81140226FE010200A927E2 /* Stocks */,
+				2C7AE85127021CD7006D5E51 /* README.md */,
 				2C81140126FE010200A927E2 /* Products */,
 			);
 			sourceTree = "<group>";
