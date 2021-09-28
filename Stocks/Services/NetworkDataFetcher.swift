@@ -10,14 +10,14 @@ import Foundation
 class NetworkDataFetcher {
     static let shared = NetworkDataFetcher()
     
-    func fetchStock(urlString: String, response: @escaping (Stock) -> Void) {
+    func fetch<T: Decodable>(dataType: T.Type, urlString: String, response: @escaping (T) -> Void) {
         NetworkService.shared.request(urlString: urlString) { result in
             switch result {
             case .success(let data):
                 do {
-                    let stock = try JSONDecoder().decode(Stock.self, from: data)
+                    let type = try JSONDecoder().decode(T.self, from: data)
                     // TODO: ПОместить в основной поток, чтобы при вызове функции не делать это во вью контроллере
-                    response(stock)
+                    response(type)
                 } catch let error {
                     print(error)
                 }

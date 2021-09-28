@@ -64,7 +64,7 @@ extension StockListViewController {
         DataManager.shared.companySymbols.forEach { symbol in
             let stockUrlString = "https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(token)"
             
-            NetworkDataFetcher.shared.fetchStock(urlString: stockUrlString) { [weak self] stock in
+            NetworkDataFetcher.shared.fetch(dataType: Stock.self, urlString: stockUrlString) { [weak self] stock in
                 self?.stocks.append(stock)
                 
                 DispatchQueue.main.async {
