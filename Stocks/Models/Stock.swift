@@ -14,4 +14,5 @@ struct Stock: Decodable {
     // TODO: Сделать отдельную модель для получения логотипа так как ссылка на него совсем другого типа и это отдельная модель данных.
     // TODO: Задание звучит так: В использованном нами API есть возможность получить ссылку на логотип компании методом /stock/{symbol}/logo, который возвращает URL на картинку вида https:// storage.googleapis.com/iex/api/logos/{symbol}.png. Можно скачать по нему логотип и отобразить его на экране с помощью UIImage.
     // TODO: Полная ссылка на json выглядит так: https://cloud.iexapis.com/stable/stock/\(symbol)/logo/quote?token=\(token)
+    // TODO: Тип модели {"url":"https://storage.googleapis.com/iexcloud-hl37opg/api/logos/AAPL.png"}
 }
