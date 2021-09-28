@@ -12,7 +12,7 @@ class NetworkService {
     
     func request(urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
         guard let url = URL(string: urlString) else {
-            //TODO: С помощью Result вернуть сбда ошибку, создав кейс ошибок в менеджере сети. Этот кейс нужно подписать под протокол error, и его указать в блоке ошибок вмето Error
+            //TODO: С помощью Result вернуть сбюа ошибку, создав кейс ошибок в менеджере сети. Этот кейс нужно подписать под протокол error, и его указать в блоке ошибок вмето Error
 //            completion(.success(.invalidURL))
             return
             
