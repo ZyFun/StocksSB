@@ -9,11 +9,9 @@ import UIKit
 
 class StockListViewController: UITableViewController {
     
-    // MARK: - Outlets
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     // MARK: - Private properties
     private var stocks: [Stock] = []
+    private var activityIndicator = UIActivityIndicatorView(style: .large)
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -21,7 +19,7 @@ class StockListViewController: UITableViewController {
         
         tableView.rowHeight = 150
         
-        activityIndicator.hidesWhenStopped = true
+        setActivityIndicator(in: tableView)
         
         getStocks()
         
@@ -75,5 +73,12 @@ extension StockListViewController {
                 
             }
         }
+    }
+    
+    private func setActivityIndicator(in view: UIView){
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.center = view.center
+        
+        view.addSubview(activityIndicator)
     }
 }
