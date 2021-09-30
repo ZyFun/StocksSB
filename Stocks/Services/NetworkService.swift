@@ -10,12 +10,6 @@ import Foundation
 class NetworkService {
     static let shared = NetworkService()
     
-    enum NetworkError: Error {
-        case invalidURL
-        case noData
-        case decodingError
-    }
-    
     func request(urlString: String, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(.failure(.invalidURL))

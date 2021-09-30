@@ -19,6 +19,7 @@
 		2C81141026FE010400A927E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C81140E26FE010400A927E2 /* LaunchScreen.storyboard */; };
 		2C95D9C826FE109B00481796 /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C95D9C726FE109B00481796 /* StockCell.swift */; };
 		2C95D9CA26FE7D7100481796 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C95D9C926FE7D7100481796 /* NetworkService.swift */; };
+		2CE30F5227061B6F00BEECCC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE30F5127061B6F00BEECCC /* NetworkError.swift */; };
 		2CEC71A827021BBE00C63C74 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CEC71A727021BBE00C63C74 /* 000.png */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		2C81141126FE010400A927E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C95D9C726FE109B00481796 /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		2C95D9C926FE7D7100481796 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		2CE30F5127061B6F00BEECCC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2CEC71A727021BBE00C63C74 /* 000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				2C61373026FE050D00F07AFA /* DataManager.swift */,
+				2CE30F5127061B6F00BEECCC /* NetworkError.swift */,
 				2C95D9C926FE7D7100481796 /* NetworkService.swift */,
 				2C3AC82B2700BB0F003C8F05 /* NetworkDataFetcher.swift */,
 			);
@@ -231,6 +234,7 @@
 				2C95D9C826FE109B00481796 /* StockCell.swift in Sources */,
 				2C95D9CA26FE7D7100481796 /* NetworkService.swift in Sources */,
 				2C61372E26FE016C00F07AFA /* Stock.swift in Sources */,
+				2CE30F5227061B6F00BEECCC /* NetworkError.swift in Sources */,
 				2C81140626FE010200A927E2 /* SceneDelegate.swift in Sources */,
 				2C61373526FE072A00F07AFA /* StockListViewController.swift in Sources */,
 			);
