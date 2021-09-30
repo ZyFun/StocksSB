@@ -62,12 +62,8 @@ extension StockListViewController {
             
             NetworkDataFetcher.shared.fetch(dataType: Stock.self, urlString: stockUrlString) { [weak self] stock in
                 self?.stocks.append(stock)
-                
-                DispatchQueue.main.async {
-                    self?.activityIndicator.stopAnimating()
-                    self?.tableView.reloadData()
-                }
-                
+                self?.activityIndicator.stopAnimating()
+                self?.tableView.reloadData()
             }
         }
     }

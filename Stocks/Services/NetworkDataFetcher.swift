@@ -16,8 +16,9 @@ class NetworkDataFetcher {
             case .success(let data):
                 do {
                     let type = try JSONDecoder().decode(T.self, from: data)
-                    // TODO: ПОместить в основной поток, чтобы при вызове функции не делать это во вью контроллере
-                    response(type)
+                    DispatchQueue.main.async {
+                        response(type)
+                    }
                 } catch let error {
                     print(error)
                 }
