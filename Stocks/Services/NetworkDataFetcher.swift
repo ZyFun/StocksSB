@@ -33,7 +33,9 @@ class NetworkDataFetcher {
         NetworkService.shared.request(urlString: urlString) { result in
             switch result {
             case .success(let data):
-                response(data)
+                DispatchQueue.main.async {
+                    response(data)
+                }
             case .failure(let error):
                 print(error)
             }
