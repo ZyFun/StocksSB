@@ -17,10 +17,13 @@ class StockListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Defaults setting
+        title = "Gainers stocks"
         tableView.rowHeight = 150
         
         setActivityIndicator(in: tableView, for: &activityIndicator)
         
+        // Network requests
         getStocks()
         
         // TODO: Добавить обновления данных свайпом таблицы вниз.
@@ -56,16 +59,19 @@ extension StockListViewController {
         
         activityIndicator.startAnimating()
         
-        // TODO: Сделать так, чтобы при отсутствии интернета, цикл завершался
-        DataManager.shared.companySymbols.forEach { symbol in
-            let stockUrlString = "https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(token)"
+        // TODO: Сделать так, чтобы при отсутствии интернета, цикл завершался (А лучше перебирать циклом только уже закешированные данные и не начинать этот метод, если сеть отсутствует. К примеру при старте приложения делать пинг до яндекса, и если ответ не 200, прекращать выполнение работы и выводить сообщение об ошибке)
+//        Этот цикл использовать при поиске акций по токену для добавления их в массив избранного
+//        DataManager.shared.companySymbols.forEach { symbol in
+//            let stockUrlString = "https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(token)"
+            let stockUrlString = "https://cloud.iexapis.com/stable/stock/market/list/gainers%20./quote?token=\(token)"
             
-            NetworkDataFetcher.shared.fetch(dataType: Stock.self, urlString: stockUrlString) { [weak self] stock in
-                self?.stocks.append(stock)
+            NetworkDataFetcher.shared.fetch(dataType: [Stock].self, urlString: stockUrlString) { [weak self] stock in
+//                self?.stocks.append(stock) // Используется для добавления одной акции в массив через цикл
+                self?.stocks = stock // Используется для получения массива акций с сервера
                 self?.activityIndicator.stopAnimating()
                 self?.tableView.reloadData()
             }
-        }
+//        } // Завершение цикла (Чтобы не забыть зачем закомментировал)
     }
     
     private func setActivityIndicator(in view: UIView, for activityIndicator: inout UIActivityIndicatorView){
@@ -77,7 +83,7 @@ extension StockListViewController {
         activityIndicator.backgroundColor = .systemGray4
         activityIndicator.layer.cornerRadius = 15
         activityIndicator.style = .large
-        activityIndicator.color = .black // цвет установлен для того, чтобы при применении прозрачности, индикатор оставался насыщенным
+        activityIndicator.color = .label // цвет установлен для того, чтобы при применении прозрачности, индикатор оставался насыщенным. А именно этот цвет, для поддержания темной темы
         activityIndicator.alpha = 0.5
 
         view.addSubview(activityIndicator)
