@@ -20,10 +20,10 @@ class NetworkDataFetcher {
                         response(type)
                     }
                 } catch let error {
-                    print(error)
+                    print(error.localizedDescription)
                 }
             case .failure(let error):
-                print(error)
+                print(error.localizedDescription)
             }
             
         }
@@ -37,7 +37,7 @@ class NetworkDataFetcher {
                     response(data)
                 }
             case .failure(let error):
-                print(error)
+                print(error.localizedDescription)
             }
         }
     }

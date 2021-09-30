@@ -10,10 +10,15 @@ import Foundation
 class NetworkService {
     static let shared = NetworkService()
     
-    func request(urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+    enum NetworkError: Error {
+        case invalidURL
+        case noData
+        case decodingError
+    }
+    
+    func request(urlString: String, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         guard let url = URL(string: urlString) else {
-            //TODO: С помощью Result вернуть сбюа ошибку, создав кейс ошибок в менеджере сети. Этот кейс нужно подписать под протокол error, и его указать в блоке ошибок вмето Error
-//            completion(.success(.invalidURL))
+            completion(.failure(.invalidURL))
             return
             
         }
@@ -30,7 +35,7 @@ class NetworkService {
                 
             } else {
                 guard let error = error else { return }
-                completion(.failure(error))
+                completion(.failure(.noData))
                 print(error.localizedDescription + "#www")
                 return
             }
