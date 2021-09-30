@@ -23,16 +23,14 @@ class StockListViewController: UITableViewController {
         
         getStocks()
         
-        // TODO: Добавить кнопку обновления данных
+        // TODO: Добавить обновления данных свайпом таблицы вниз.
         // TODO: Добавить алерт контроллер с кнопкой обновления данных при отсутствии сети или отменой с остановкой анимации индикатора.
     }
 
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         stocks.count
     }
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StockCell", for: indexPath) as! StockCell
@@ -76,6 +74,7 @@ extension StockListViewController {
     
     private func setActivityIndicator(in view: UIView, for activityIndicator: inout UIActivityIndicatorView){
         
+        //        activityIndicator.center = view.center // тоже самое что и ручная настройка, но без фрейма
         activityIndicator = UIActivityIndicatorView(frame: CGRect(x: view.frame.width / 2 - 50,
                                                                   y: view.frame.height / 2 - 150,
                                                                   width: 100, height: 100))
@@ -84,7 +83,6 @@ extension StockListViewController {
         activityIndicator.style = .large
         activityIndicator.color = .black // цвет установлен для того, чтобы при применении прозрачности, индикатор оставался насыщенным
         activityIndicator.alpha = 0.5
-//        activityIndicator.center = view.center // тоже самое что и ручная настройка, но без фрейма
 
         view.addSubview(activityIndicator)
     }
