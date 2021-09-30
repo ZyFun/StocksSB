@@ -11,7 +11,7 @@ class StockListViewController: UITableViewController {
     
     // MARK: - Private properties
     private var stocks: [Stock] = []
-    private var activityIndicator = UIActivityIndicatorView(style: .large)
+    private var activityIndicator = UIActivityIndicatorView()
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -19,7 +19,7 @@ class StockListViewController: UITableViewController {
         
         tableView.rowHeight = 150
         
-        setActivityIndicator(in: tableView)
+        setActivityIndicator(in: tableView, for: &activityIndicator)
         
         getStocks()
         
@@ -74,10 +74,18 @@ extension StockListViewController {
         }
     }
     
-    private func setActivityIndicator(in view: UIView){
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.center = view.center
+    private func setActivityIndicator(in view: UIView, for activityIndicator: inout UIActivityIndicatorView){
         
+        activityIndicator = UIActivityIndicatorView(frame: CGRect(x: view.frame.width / 2 - 50,
+                                                                  y: view.frame.height / 2 - 150,
+                                                                  width: 100, height: 100))
+        activityIndicator.backgroundColor = .systemGray4
+        activityIndicator.layer.cornerRadius = 15
+        activityIndicator.style = .large
+        activityIndicator.color = .black // цвет установлен для того, чтобы при применении прозрачности, индикатор оставался насыщенным
+        activityIndicator.alpha = 0.5
+//        activityIndicator.center = view.center // тоже самое что и ручная настройка, но без фрейма
+
         view.addSubview(activityIndicator)
     }
 }
