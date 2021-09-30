@@ -29,7 +29,6 @@ class NetworkDataFetcher {
         }
     }
     
-    // TODO: Переписать тип под 1 метод используя данные с урока 2.11 (тайминг 1 час 8 минут)
     func fetchLogo(urlString: String, response: @escaping (Data) -> Void) {
         NetworkService.shared.request(urlString: urlString) { result in
             switch result {
@@ -38,7 +37,6 @@ class NetworkDataFetcher {
             case .failure(let error):
                 print(error)
             }
-            
         }
     }
     

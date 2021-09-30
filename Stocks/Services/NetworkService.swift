@@ -23,7 +23,11 @@ class NetworkService {
             if let data = data,
                (response as? HTTPURLResponse)?.statusCode == 200,
                error == nil {
-                completion(.success(data))
+                
+                DispatchQueue.main.async {
+                    completion(.success(data))
+                }
+                
             } else {
                 guard let error = error else { return }
                 completion(.failure(error))

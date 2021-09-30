@@ -17,7 +17,5 @@ class DataManager {
         "FB",
     ]
     
-    // TODO: Добавить сюда или в отдельный файл enum для ссылок на сайт
-    
     private init(){}
 }
