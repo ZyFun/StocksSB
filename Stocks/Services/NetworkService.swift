@@ -19,6 +19,30 @@ class NetworkService {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             
+            /*
+             
+             // Заготовка для обработки ошибок и вывода сообщений
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
+                completion(.failure(.networkError))
+                print("нет сети")
+                return
+            }
+            
+            if (200...300).contains(statusCode) {
+                switch statusCode {
+                case 200:
+                    print("OK")
+                case 403:
+                    print("Forbidden")
+                default:
+                    print("Неизвестная ошибка")
+                    print(statusCode)
+                    return
+                }
+            }
+             
+            */
+            
             if let data = data,
                (response as? HTTPURLResponse)?.statusCode == 200,
                error == nil {
