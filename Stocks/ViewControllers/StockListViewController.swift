@@ -52,7 +52,6 @@ class StockListViewController: UITableViewController {
 
 // MARK: - Private method
 extension StockListViewController {
-    // TODO: Вывести алерт при отсутствии сети
     @objc private func getStocks() {
         // TODO: Убрать ключь в отдельный безопасный файл и добавить его в гит игнор (добавить в проект гитигнор) В дальнейшем делать так со всеми ключами. Данный токен уничтожить и сгенерировать новый. Почитать подробнее о том, как хранить токены.
         let token = "pk_92287e65be054541b0a167b0ac4fa0aa"

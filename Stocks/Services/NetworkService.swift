@@ -21,6 +21,7 @@ class NetworkService {
             
             /*
              
+             // TODO: Доработать обработку ошибок для отображения различной информации в алерте
              // Заготовка для обработки ошибок и вывода сообщений
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
                 completion(.failure(.networkError))
