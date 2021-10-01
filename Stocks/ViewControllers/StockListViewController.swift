@@ -76,8 +76,8 @@ extension StockListViewController {
                             switch result {
                             case .success(let stock):
                                 self?.stocks.append(stock)
-                            case .failure(_):
-                                break
+                            case .failure(let error):
+                                print(error)
                             }
                         }
                     }
@@ -85,12 +85,14 @@ extension StockListViewController {
                 
                 self?.activityIndicator.stopAnimating()
                 self?.tableView.reloadData()
+                
             case .failure(let error):
                 if error == .noData {
                     self?.showAlertReloadData(title: "Network error", message: "No internet connection, to retry?")
                 }
             }
             
+            // TODO: Подумать над правильностью размещения в последовательности выполнения кода.
             if self?.refreshControl != nil {
                 self?.refreshControl?.endRefreshing()
             }
