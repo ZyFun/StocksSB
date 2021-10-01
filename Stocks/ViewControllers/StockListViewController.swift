@@ -96,4 +96,21 @@ extension StockListViewController {
 
         view.addSubview(activityIndicator)
     }
+    
+    func showAlertReloadData(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let loadAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            self.activityIndicator.startAnimating()
+            self.getStocks()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
+            self.activityIndicator.stopAnimating()
+            self.tableView.reloadData()
+        }
+        
+        alert.addAction(loadAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
