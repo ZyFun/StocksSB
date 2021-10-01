@@ -18,7 +18,6 @@ class StockListViewController: UITableViewController {
         super.viewDidLoad()
         
         // Defaults setting
-        title = "Gainers stocks"
         tableView.rowHeight = 150
         setupRefreshControl()
         
@@ -59,21 +58,46 @@ extension StockListViewController {
         let token = "pk_92287e65be054541b0a167b0ac4fa0aa"
         
         // TODO: Сделать так, чтобы при отсутствии интернета, цикл завершался (А лучше перебирать циклом только уже закешированные данные и не начинать этот метод, если сеть отсутствует. К примеру при старте приложения делать пинг до яндекса, и если ответ не 200, прекращать выполнение работы и выводить сообщение об ошибке)
-//        Этот цикл использовать при поиске акций по токену для добавления их в массив избранного
-//        DataManager.shared.companySymbols.forEach { symbol in
-//            let stockUrlString = "https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(token)"
-            let stockUrlString = "https://cloud.iexapis.com/stable/stock/market/list/gainers%20./quote?token=\(token)"
-            
-            NetworkDataFetcher.shared.fetch(dataType: [Stock].self, urlString: stockUrlString) { [weak self] stock in
-//                self?.stocks.append(stock) // Используется для добавления одной акции в массив через цикл
+        
+        title = "Gainers stocks"
+        let stockUrlString = "https://cloud.iexapis.com/stable/stock/market/list/gainers%20./quote?token=\(token)"
+        
+        NetworkDataFetcher.shared.fetch(dataType: [Stock].self, urlString: stockUrlString) { [weak self] result in
+            switch result {
+            case .success(let stock):
                 self?.stocks = stock // Используется для получения массива акций с сервера
+                
+                if stock.isEmpty {
+                    // Использование заглушки, чтобы при отсутствии данных с сервера, загрузилось хоть что-то и было видно что приложение работает. Такое решение было принято, потому что при получении массива с сервера, стал приходить пустой массив
+                    self?.title = "Stocks"
+                    self?.showAlertReloadData(title: "Inline data loaded", message: "No data received, to retry?")
+                    
+                    DataManager.shared.companySymbols.forEach { symbol in
+                        let hardcodeStockUrlString = "https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(token)"
+                        
+                        NetworkDataFetcher.shared.fetch(dataType: Stock.self, urlString: hardcodeStockUrlString) { result in
+                            switch result {
+                            case .success(let stock):
+                                self?.stocks.append(stock)
+                            case .failure(_):
+                                break
+                            }
+                        }
+                    }
+                }
+                
                 self?.activityIndicator.stopAnimating()
                 self?.tableView.reloadData()
-                if self?.refreshControl != nil {
-                    self?.refreshControl?.endRefreshing()
+            case .failure(let error):
+                if error == .noData {
+                    self?.showAlertReloadData(title: "Network error", message: "No internet connection, to retry?")
                 }
             }
-//        } // Завершение цикла (Чтобы не забыть зачем закомментировал)
+            
+            if self?.refreshControl != nil {
+                self?.refreshControl?.endRefreshing()
+            }
+        }
     }
     
     private func setupRefreshControl() {
