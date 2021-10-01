@@ -11,7 +11,7 @@ class StockListViewController: UITableViewController {
     
     // MARK: - Private properties
     private var stocks: [Stock] = []
-    private var activityIndicator = UIActivityIndicatorView()
+    private var activityIndicator = UIActivityIndicatorView() // Срабатывает только при старте приложения
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -20,13 +20,14 @@ class StockListViewController: UITableViewController {
         // Defaults setting
         title = "Gainers stocks"
         tableView.rowHeight = 150
+        setupRefreshControl()
         
         setActivityIndicator(in: tableView, for: &activityIndicator)
         
         // Network requests
+        activityIndicator.startAnimating()
         getStocks()
         
-        // TODO: Добавить обновления данных свайпом таблицы вниз.
         // TODO: Добавить алерт контроллер с кнопкой обновления данных при отсутствии сети или отменой с остановкой анимации индикатора.
     }
 
@@ -53,11 +54,9 @@ class StockListViewController: UITableViewController {
 // MARK: - Private method
 extension StockListViewController {
     // TODO: Вывести алерт при отсутствии сети
-    private func getStocks() {
+    @objc private func getStocks() {
         // TODO: Убрать ключь в отдельный безопасный файл и добавить его в гит игнор (добавить в проект гитигнор) В дальнейшем делать так со всеми ключами. Данный токен уничтожить и сгенерировать новый. Почитать подробнее о том, как хранить токены.
         let token = "pk_92287e65be054541b0a167b0ac4fa0aa"
-        
-        activityIndicator.startAnimating()
         
         // TODO: Сделать так, чтобы при отсутствии интернета, цикл завершался (А лучше перебирать циклом только уже закешированные данные и не начинать этот метод, если сеть отсутствует. К примеру при старте приложения делать пинг до яндекса, и если ответ не 200, прекращать выполнение работы и выводить сообщение об ошибке)
 //        Этот цикл использовать при поиске акций по токену для добавления их в массив избранного
@@ -70,8 +69,17 @@ extension StockListViewController {
                 self?.stocks = stock // Используется для получения массива акций с сервера
                 self?.activityIndicator.stopAnimating()
                 self?.tableView.reloadData()
+                if self?.refreshControl != nil {
+                    self?.refreshControl?.endRefreshing()
+                }
             }
 //        } // Завершение цикла (Чтобы не забыть зачем закомментировал)
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl() // Конспект: инициализация refreshControl для его активации в интерфейсе
+        refreshControl?.attributedTitle = NSAttributedString(string: "Loading data")
+        refreshControl?.addTarget(self, action: #selector(getStocks), for: .valueChanged)
     }
     
     private func setActivityIndicator(in view: UIView, for activityIndicator: inout UIActivityIndicatorView){
