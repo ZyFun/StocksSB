@@ -55,14 +55,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C1BD3282709DB51000D771C /* PrivateDataset */ = {
-			isa = PBXGroup;
-			children = (
-				2C1BD3292709DBB0000D771C /* Token.swift */,
-			);
-			path = PrivateDataset;
-			sourceTree = "<group>";
-		};
 		2C30C2182700E60E004605FD /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +74,7 @@
 		2C61373226FE051600F07AFA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2C1BD3292709DBB0000D771C /* Token.swift */,
 				2C61373026FE050D00F07AFA /* DataManager.swift */,
 				2CE30F5127061B6F00BEECCC /* NetworkError.swift */,
 				2C95D9C926FE7D7100481796 /* NetworkService.swift */,
@@ -131,7 +124,6 @@
 				2C61372C26FE015200F07AFA /* Models */,
 				2C61373326FE06FB00F07AFA /* ViewControllers */,
 				2C30C2182700E60E004605FD /* View */,
-				2C1BD3282709DB51000D771C /* PrivateDataset */,
 				2C61373226FE051600F07AFA /* Services */,
 				2C61373626FE09E500F07AFA /* Storyboards */,
 				2C95D9C526FE0C4500481796 /* Supports */,
