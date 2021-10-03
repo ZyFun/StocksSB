@@ -14,7 +14,6 @@ class NetworkService {
         guard let url = URL(string: urlString) else {
             completion(.failure(.invalidURL))
             return
-            
         }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
