@@ -55,12 +55,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C30C2182700E60E004605FD /* View */ = {
+		2C30C2182700E60E004605FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				2C95D9C726FE109B00481796 /* StockCell.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		2C61372C26FE015200F07AFA /* Models */ = {
@@ -123,7 +123,7 @@
 			children = (
 				2C61372C26FE015200F07AFA /* Models */,
 				2C61373326FE06FB00F07AFA /* ViewControllers */,
-				2C30C2182700E60E004605FD /* View */,
+				2C30C2182700E60E004605FD /* Views */,
 				2C61373226FE051600F07AFA /* Services */,
 				2C61373626FE09E500F07AFA /* Storyboards */,
 				2C95D9C526FE0C4500481796 /* Supports */,
