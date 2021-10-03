@@ -102,7 +102,7 @@ extension StockListViewController {
     private func setupRefreshControl() {
         refreshControl = UIRefreshControl() // Конспект: инициализация refreshControl для его активации в интерфейсе
         refreshControl?.attributedTitle = NSAttributedString(string: "Loading data")
-        refreshControl?.addTarget(self, action: #selector(getStocks), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(getStocks), for: .valueChanged) // Конспект: self, класс в котором должно произойти действие при взаимодействии с элементом интерфейса.
     }
     
     private func setActivityIndicator(in view: UIView, for activityIndicator: inout UIActivityIndicatorView){
