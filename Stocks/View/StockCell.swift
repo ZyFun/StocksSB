@@ -47,8 +47,15 @@ extension StockCell {
     private func getLogo(_ symbol: String, _ token: String) {
         let logoJSONUrlString = "https://cloud.iexapis.com/stable/stock/\(symbol)/logo/quote?token=\(token)"
         
-        NetworkDataFetcher.shared.fetchLogo(urlString: imageUrlString) { [weak self] imageData in
-            self?.companyLogoImageView.image = UIImage(data: imageData)
+        NetworkDataFetcher.shared.fetch(dataType: CompanyLogo.self, urlString: logoJSONUrlString) { result in
+            switch result {
+            case .success(let logo):
+                NetworkDataFetcher.shared.fetchLogo(urlString: logo.url) { [weak self] imageData in
+                    self?.companyLogoImageView.image = UIImage(data: imageData)
+                }
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }
