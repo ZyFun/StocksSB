@@ -27,7 +27,6 @@ class StockListViewController: UITableViewController {
         activityIndicator.startAnimating()
         getStocks(Token.publicKey.rawValue)
         
-        // TODO: Добавить алерт контроллер с кнопкой обновления данных при отсутствии сети или отменой с остановкой анимации индикатора.
     }
 
     // MARK: - Table view data source
@@ -90,7 +89,6 @@ extension StockListViewController {
                 }
             }
             
-            // TODO: Подумать над правильностью размещения в последовательности выполнения кода.
             if self?.refreshControl != nil {
                 self?.refreshControl?.endRefreshing()
             }
