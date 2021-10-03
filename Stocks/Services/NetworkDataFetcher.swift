@@ -40,7 +40,7 @@ class NetworkDataFetcher {
                     response(data)
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                print("Load image data: \(error)")
             }
         }
     }
