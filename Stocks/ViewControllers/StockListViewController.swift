@@ -55,9 +55,9 @@ extension StockListViewController {
     @objc private func getStocks(_ token: String) {
         
         title = "Gainers stocks"
-        let stockUrlString = "https://cloud.iexapis.com/stable/stock/market/list/gainers%20./quote?token=\(token)"
+        let stockJSONUrlString = "https://cloud.iexapis.com/stable/stock/market/list/gainers%20./quote?token=\(token)"
         
-        NetworkDataFetcher.shared.fetch(dataType: [Stock].self, urlString: stockUrlString) { [weak self] result in
+        NetworkDataFetcher.shared.fetch(dataType: [Stock].self, urlString: stockJSONUrlString) { [weak self] result in
             switch result {
             case .success(let stock):
                 self?.stocks = stock // Используется для получения массива акций с сервера
@@ -68,9 +68,9 @@ extension StockListViewController {
                     self?.showAlertReloadData(title: "Inline data loaded", message: "No data received, to retry?")
                     
                     DataManager.shared.companySymbols.forEach { symbol in
-                        let hardcodeStockUrlString = "https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(token)"
+                        let hardcodeStockJSONUrlString = "https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(token)"
                         
-                        NetworkDataFetcher.shared.fetch(dataType: Stock.self, urlString: hardcodeStockUrlString) { result in
+                        NetworkDataFetcher.shared.fetch(dataType: Stock.self, urlString: hardcodeStockJSONUrlString) { result in
                             switch result {
                             case .success(let stock):
                                 self?.stocks.append(stock)
