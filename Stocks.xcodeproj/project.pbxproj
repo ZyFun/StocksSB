@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C1BD32A2709DBB0000D771C /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD3292709DBB0000D771C /* Token.swift */; };
 		2C3AC82C2700BB0F003C8F05 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AC82B2700BB0F003C8F05 /* NetworkDataFetcher.swift */; };
 		2C61372E26FE016C00F07AFA /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C61372D26FE016C00F07AFA /* Stock.swift */; };
 		2C61373126FE050D00F07AFA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C61373026FE050D00F07AFA /* DataManager.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C1BD3292709DBB0000D771C /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		2C3AC82B2700BB0F003C8F05 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		2C61372D26FE016C00F07AFA /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		2C61373026FE050D00F07AFA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C1BD3282709DB51000D771C /* PrivateDataset */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD3292709DBB0000D771C /* Token.swift */,
+			);
+			path = PrivateDataset;
+			sourceTree = "<group>";
+		};
 		2C30C2182700E60E004605FD /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +131,7 @@
 				2C61372C26FE015200F07AFA /* Models */,
 				2C61373326FE06FB00F07AFA /* ViewControllers */,
 				2C30C2182700E60E004605FD /* View */,
+				2C1BD3282709DB51000D771C /* PrivateDataset */,
 				2C61373226FE051600F07AFA /* Services */,
 				2C61373626FE09E500F07AFA /* Storyboards */,
 				2C95D9C526FE0C4500481796 /* Supports */,
@@ -229,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C3AC82C2700BB0F003C8F05 /* NetworkDataFetcher.swift in Sources */,
+				2C1BD32A2709DBB0000D771C /* Token.swift in Sources */,
 				2C61373126FE050D00F07AFA /* DataManager.swift in Sources */,
 				2C81140426FE010200A927E2 /* AppDelegate.swift in Sources */,
 				2C95D9C826FE109B00481796 /* StockCell.swift in Sources */,
