@@ -10,7 +10,7 @@ import Foundation
 class NetworkDataFetcher {
     static let shared = NetworkDataFetcher()
     
-    func fetch<T: Decodable>(dataType: T.Type, urlString: String, response: @escaping (Result<T, NetworkError>) -> Void) {
+    func fetchJSON<T: Decodable>(dataType: T.Type, urlString: String, response: @escaping (Result<T, NetworkError>) -> Void) {
         NetworkService.shared.request(urlString: urlString) { result in
             switch result {
             case .success(let data):
