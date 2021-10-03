@@ -25,7 +25,7 @@ class StockCell: UITableViewCell {
         priceLabel.text = String(stock.latestPrice ?? 0)
         changePriceLabel.text = String(stock.change ?? 0)
         
-        getLogo(using: stock.symbol ?? "")
+        getLogo(stock.symbol ?? "", Token.publicKey.rawValue)
         
     }
     
@@ -44,8 +44,8 @@ extension StockCell {
         }
     }
     
-    private func getLogo(using symbol: String) {
-        let imageUrlString = "https://storage.googleapis.com/iex/api/logos/\(symbol).png"
+    private func getLogo(_ symbol: String, _ token: String) {
+        let logoJSONUrlString = "https://cloud.iexapis.com/stable/stock/\(symbol)/logo/quote?token=\(token)"
         
         NetworkDataFetcher.shared.fetchLogo(urlString: imageUrlString) { [weak self] imageData in
             self?.companyLogoImageView.image = UIImage(data: imageData)

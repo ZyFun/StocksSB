@@ -25,7 +25,7 @@ class StockListViewController: UITableViewController {
         
         // Network requests
         activityIndicator.startAnimating()
-        getStocks()
+        getStocks(Token.publicKey.rawValue)
         
         // TODO: Добавить алерт контроллер с кнопкой обновления данных при отсутствии сети или отменой с остановкой анимации индикатора.
     }
@@ -52,9 +52,7 @@ class StockListViewController: UITableViewController {
 
 // MARK: - Private method
 extension StockListViewController {
-    @objc private func getStocks() {
-        // TODO: Убрать ключь в отдельный безопасный файл и добавить его в гит игнор (добавить в проект гитигнор) В дальнейшем делать так со всеми ключами. Данный токен уничтожить и сгенерировать новый. Почитать подробнее о том, как хранить токены.
-        let token = "pk_92287e65be054541b0a167b0ac4fa0aa"
+    @objc private func getStocks(_ token: String) {
         
         title = "Gainers stocks"
         let stockUrlString = "https://cloud.iexapis.com/stable/stock/market/list/gainers%20./quote?token=\(token)"
@@ -124,7 +122,7 @@ extension StockListViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let loadAction = UIAlertAction(title: "Yes", style: .default) { _ in
             self.activityIndicator.startAnimating()
-            self.getStocks()
+            self.getStocks(Token.publicKey.rawValue)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
             self.activityIndicator.stopAnimating()
