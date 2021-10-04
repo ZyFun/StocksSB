@@ -60,7 +60,7 @@ extension StockListViewController {
         NetworkDataFetcher.shared.fetchJSON(dataType: [Stock].self, urlString: stockJSONUrlString) { [weak self] result in
             switch result {
             case .success(let stock):
-                self?.stocks = stock // Используется для получения массива акций с сервера
+                self?.stocks = stock
                 
                 if stock.isEmpty {
                     // Использование заглушки, чтобы при отсутствии данных с сервера, загрузилось хоть что-то и было видно что приложение работает. Такое решение было принято, потому что при получении массива с сервера, стал приходить пустой массив

@@ -13,7 +13,7 @@ class NetworkDataFetcher {
     func fetchJSON<T: Decodable>(dataType: T.Type, urlString: String, response: @escaping (Result<T, NetworkError>) -> Void) {
         NetworkService.shared.request(urlString: urlString) { result in
             switch result {
-            case .success(let data):
+            case .success(let (data, _)):
                 do {
                     let type = try JSONDecoder().decode(T.self, from: data)
                     DispatchQueue.main.async {
@@ -46,22 +46,36 @@ class NetworkDataFetcher {
 //    }
     
     // TODO: Переписать этот метод, оставив в нём только передачу полученных данных с помощью сетевого запроса
-    func fetchLogoToImageView(from url: URL, completion: @escaping (Data, URLResponse) -> Void) {
+    func fetchLogoToImageView(from url: URL, response: @escaping (Data, URLResponse) -> Void) {
+        guard let urlString = try? String(contentsOf: url) else { return }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, let response = response else {
-                print(error?.localizedDescription ?? "No error description")
-                return
+        NetworkService.shared.request(urlString: urlString) { result in
+            switch result {
+            case .success(let(data, urlResponse)):
+                // Используется как защита. Без этого ячейка таблицы может получить неправильные данные и например напротив apple будет логотип facebook
+                guard url == urlResponse.url else { return }
+                
+                DispatchQueue.main.async {
+                    response(data, urlResponse)
+                }
+            case .failure(let error):
+                print("Load image data: \(error)")
             }
-            
-            // Используется как защита от того чтобы ответ совпадал с переданным ячейкой url. Без этого ячейка таблицы может получить неправильные данные
-            guard url == response.url else { return }
-            
-            DispatchQueue.main.async {
-                completion(data, response)
+        
+//        URLSession.shared.dataTask(with: url) { data, response, error in
+//            guard let data = data, let response = response else {
+//                print(error?.localizedDescription ?? "No error description")
+//                return
+//            }
+//
+//            // Используется как защита от того чтобы ответ совпадал с переданным ячейкой url. Без этого ячейка таблицы может получить неправильные данные
+//            guard url == response.url else { return }
+//
+//            DispatchQueue.main.async {
+//                completion(data, response)
             }
-
-        }.resume()
+//
+//        }.resume()
     }
     
     private init(){}

@@ -50,7 +50,7 @@ extension StockCell {
         NetworkDataFetcher.shared.fetchJSON(dataType: CompanyLogo.self, urlString: logoJSONUrlString) { [weak self] result in
             switch result {
             case .success(let logo):
-                self?.companyLogoImageView.fetchImage(from: logo.url)
+                self?.companyLogoImageView.getLogo(from: logo.url)
 //                // Загрузка без кеширования
 //                NetworkDataFetcher.shared.fetchLogo(urlString: logo.url) { [weak self] imageData in
 //                    self?.companyLogoImageView.image = UIImage(data: imageData)

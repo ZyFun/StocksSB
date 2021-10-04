@@ -11,7 +11,7 @@ class NetworkService {
     static let shared = NetworkService()
     
     // TODO: Попробовать стелать этот метод общим, для переноса сетевого запроса из fetchLogoToImageView
-    func request(urlString: String, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+    func request(urlString: String, completion: @escaping (Result<(Data, URLResponse), NetworkError>) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(.failure(.invalidURL))
             return
@@ -44,12 +44,15 @@ class NetworkService {
              
             */
             
+            guard let response = response else { return }
+
+            
             if let data = data,
-               (response as? HTTPURLResponse)?.statusCode == 200,
+//               (response as? HTTPURLResponse)?.statusCode == 200,
                error == nil {
                 
                 DispatchQueue.main.async {
-                    completion(.success(data))
+                    completion(.success((data, response)))
                 }
                 
             } else {
