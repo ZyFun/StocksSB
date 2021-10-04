@@ -19,10 +19,10 @@ class CompanyLogoImageView: UIImageView {
         }
         
         // Используем изображение из кэша, если оно там есть
-//        if let cachedImage = getCachedImage(from: url) {
-//            image = cachedImage
-//            return
-//        }
+        if let cachedImage = getCachedImage(from: url) {
+            image = cachedImage
+            return
+        }
         
         // Если изображение нету, грузим его из сети
         NetworkDataFetcher.shared.fetchLogoToImageView(from: url) { [weak self] data, response in
