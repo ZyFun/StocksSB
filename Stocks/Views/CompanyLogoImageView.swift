@@ -13,8 +13,7 @@ class CompanyLogoImageView: UIImageView {
     
     func getLogo(from url: String) {
         guard let url = URL(string: url) else {
-            print("invalidURL")
-            // TODO: передать сюда картинку с заготовленным изображением, чтобы не отображалась пустота
+            image = UIImage(named: "noImage")
             return
         }
         
