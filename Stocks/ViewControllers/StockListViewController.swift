@@ -25,7 +25,7 @@ class StockListViewController: UITableViewController {
         
         // Network requests
         activityIndicator.startAnimating()
-        getStocks(Token.publicKey.rawValue)
+        getStocks()
         
     }
 
@@ -51,7 +51,8 @@ class StockListViewController: UITableViewController {
 
 // MARK: - Private method
 extension StockListViewController {
-    @objc private func getStocks(_ token: String) {
+    @objc private func getStocks() {
+        let token = Token.publicKey.rawValue
         
         title = "Gainers stocks"
         let stockJSONUrlString = "https://cloud.iexapis.com/stable/stock/market/list/gainers%20./quote?token=\(token)"
@@ -120,7 +121,7 @@ extension StockListViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let loadAction = UIAlertAction(title: "Yes", style: .default) { _ in
             self.activityIndicator.startAnimating()
-            self.getStocks(Token.publicKey.rawValue)
+            self.getStocks()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
             self.activityIndicator.stopAnimating()
