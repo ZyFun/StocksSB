@@ -14,7 +14,7 @@ class StockCell: UITableViewCell {
     @IBOutlet weak var symbolLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var changePriceLabel: UILabel!
-    @IBOutlet weak var companyLogoImageView: UIImageView!
+    @IBOutlet weak var companyLogoImageView: CompanyLogoImageView!
     
     // MARK: - Public method
     func configure(with stock: Stock) {
@@ -47,12 +47,14 @@ extension StockCell {
     private func getLogo(_ symbol: String, _ token: String) {
         let logoJSONUrlString = "https://cloud.iexapis.com/stable/stock/\(symbol)/logo/quote?token=\(token)"
         
-        NetworkDataFetcher.shared.fetchJSON(dataType: CompanyLogo.self, urlString: logoJSONUrlString) { result in
+        NetworkDataFetcher.shared.fetchJSON(dataType: CompanyLogo.self, urlString: logoJSONUrlString) { [weak self] result in
             switch result {
             case .success(let logo):
-                NetworkDataFetcher.shared.fetchLogo(urlString: logo.url) { [weak self] imageData in
-                    self?.companyLogoImageView.image = UIImage(data: imageData)
-                }
+                self?.companyLogoImageView.fetchImage(from: logo.url)
+//                // Загрузка без кеширования
+//                NetworkDataFetcher.shared.fetchLogo(urlString: logo.url) { [weak self] imageData in
+//                    self?.companyLogoImageView.image = UIImage(data: imageData)
+//                }
             case .failure(let error):
                 print(error)
             }
