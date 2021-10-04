@@ -61,21 +61,7 @@ class NetworkDataFetcher {
             case .failure(let error):
                 print("Load image data: \(error)")
             }
-        
-//        URLSession.shared.dataTask(with: url) { data, response, error in
-//            guard let data = data, let response = response else {
-//                print(error?.localizedDescription ?? "No error description")
-//                return
-//            }
-//
-//            // Используется как защита от того чтобы ответ совпадал с переданным ячейкой url. Без этого ячейка таблицы может получить неправильные данные
-//            guard url == response.url else { return }
-//
-//            DispatchQueue.main.async {
-//                completion(data, response)
-            }
-//
-//        }.resume()
+        }
     }
     
     private init(){}
