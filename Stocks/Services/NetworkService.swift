@@ -10,6 +10,7 @@ import Foundation
 class NetworkService {
     static let shared = NetworkService()
     
+    // TODO: Попробовать стелать этот метод общим, для переноса сетевого запроса из fetchLogoToImageView
     func request(urlString: String, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(.failure(.invalidURL))

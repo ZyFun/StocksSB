@@ -13,6 +13,7 @@ class CompanyLogoImageView: UIImageView {
     
     func fetchImage(from url: String) {
         guard let url = URL(string: url) else {
+            print("invalidURL")
             // TODO: передать сюда картинку с заготовленным изображением, чтобы не отображалась пустота
             return
         }
@@ -24,7 +25,7 @@ class CompanyLogoImageView: UIImageView {
         }
         
         // Если изображение нету, грузим его из сети
-        NetworkDataFetcher.shared.fetchImageCache(from: url) { [weak self] data, response in
+        NetworkDataFetcher.shared.fetchLogoToImageView(from: url) { [weak self] data, response in
             self?.image = UIImage(data: data)
             self?.saveDataToCache(with: data, response: response)
         }

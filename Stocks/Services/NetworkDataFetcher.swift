@@ -32,20 +32,21 @@ class NetworkDataFetcher {
         }
     }
     
-    func fetchLogo(urlString: String, response: @escaping (Data) -> Void) {
-        NetworkService.shared.request(urlString: urlString) { result in
-            switch result {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    response(data)
-                }
-            case .failure(let error):
-                print("Load image data: \(error)")
-            }
-        }
-    }
+//    func fetchLogo(urlString: String, response: @escaping (Data) -> Void) {
+//        NetworkService.shared.request(urlString: urlString) { result in
+//            switch result {
+//            case .success(let data):
+//                DispatchQueue.main.async {
+//                    response(data)
+//                }
+//            case .failure(let error):
+//                print("Load image data: \(error)")
+//            }
+//        }
+//    }
     
-    func fetchImageCache(from url: URL, completion: @escaping (Data, URLResponse) -> Void) {
+    // TODO: Переписать этот метод, оставив в нём только передачу полученных данных с помощью сетевого запроса
+    func fetchLogoToImageView(from url: URL, completion: @escaping (Data, URLResponse) -> Void) {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, let response = response else {
@@ -53,6 +54,7 @@ class NetworkDataFetcher {
                 return
             }
             
+            // Используется как защита от того чтобы ответ совпадал с переданным ячейкой url. Без этого ячейка таблицы может получить неправильные данные
             guard url == response.url else { return }
             
             DispatchQueue.main.async {
