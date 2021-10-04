@@ -45,7 +45,6 @@ class NetworkDataFetcher {
 //        }
 //    }
     
-    // TODO: Переписать этот метод, оставив в нём только передачу полученных данных с помощью сетевого запроса
     func fetchLogoToImageView(from url: URL, response: @escaping (Data, URLResponse) -> Void) {
         let urlString = url.absoluteString
         
