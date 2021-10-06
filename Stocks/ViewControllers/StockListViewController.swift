@@ -85,8 +85,20 @@ extension StockListViewController {
                 self?.tableView.reloadData()
                 
             case .failure(let error):
-                if error == .noData {
-                    self?.showAlertReloadData(title: "Network error", message: "No internet connection, to retry?")
+                // TODO: Доделать обработку ошибок от сервера
+                switch error {
+                case .networkError:
+                    self?.showAlertReloadData(title: "Network error",
+                                              message: "No internet connection, to retry?")
+                case .invalidURL:
+                    break
+                case .noData:
+                    break
+                case .decodingError:
+                    break
+                case .serverError:
+                    self?.showAlertReloadData(title: "503 Service Unavailable",
+                                              message: "Service temporarily unavailable, to retry?")
                 }
             }
             

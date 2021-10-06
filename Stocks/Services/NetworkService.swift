@@ -17,31 +17,25 @@ class NetworkService {
         }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
-            
-            /*
              
              // TODO: Доработать обработку ошибок для отображения различной информации в алерте
              // Заготовка для обработки ошибок и вывода сообщений
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
                 completion(.failure(.networkError))
-                print("нет сети")
                 return
             }
             
-            if (200...300).contains(statusCode) {
+            if !(200..<300).contains(statusCode) {
                 switch statusCode {
-                case 200:
-                    print("OK")
                 case 403:
                     print("Forbidden")
+                case 503:
+                    completion(.failure(.serverError))
                 default:
-                    print("Неизвестная ошибка")
+                    print("Не зарегистрированная ошибка")
                     print(statusCode)
-                    return
                 }
             }
-             
-            */
             
             guard let response = response else { return }
 
