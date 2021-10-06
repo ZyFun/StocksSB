@@ -38,10 +38,8 @@ class NetworkService {
             }
             
             guard let response = response else { return }
-
             
             if let data = data,
-//               (response as? HTTPURLResponse)?.statusCode == 200,
                error == nil {
                 
                 DispatchQueue.main.async {
