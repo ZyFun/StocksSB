@@ -91,11 +91,11 @@ extension StockListViewController {
                     self?.showAlertReloadData(title: "Network error",
                                               message: "No internet connection, to retry?")
                 case .invalidURL:
-                    break
+                    print(error)
                 case .noData:
-                    break
+                    print(error)
                 case .decodingError:
-                    break
+                    print(error)
                 case .serverError:
                     self?.showAlertReloadData(title: "503 Service Unavailable",
                                               message: "Service temporarily unavailable, to retry?")
