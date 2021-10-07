@@ -22,8 +22,8 @@ class StockCell: UITableViewCell {
         
         companyNameLabel.text = stock.companyName
         symbolLabel.text = stock.symbol
-        priceLabel.text = String(stock.latestPrice ?? 0)
-        changePriceLabel.text = String(stock.change ?? 0)
+        priceLabel.text = setCurrencySymbol(currency: stock.currency ?? "") + String(stock.latestPrice ?? 0)
+        changePriceLabel.text = setCurrencySymbol(currency: stock.currency ?? "") + String(stock.change ?? 0)
         
         getLogo(stock.symbol ?? "", Token.publicKey.rawValue)
         
@@ -42,6 +42,18 @@ extension StockCell {
         default:
             changePriceLabel.textColor = .label
         }
+    }
+    
+    private func setCurrencySymbol(currency: String) -> String {
+        var currencySymbol: String
+        
+        switch currency {
+        case "USD":
+            currencySymbol = "$"
+        default:
+            currencySymbol = currency
+        }
+        return currencySymbol
     }
     
     private func getLogo(_ symbol: String, _ token: String) {

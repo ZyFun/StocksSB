@@ -6,11 +6,11 @@
 //
 
 struct Stock: Decodable {
-    // TODO: добавить в модель данных валюту
     let companyName: String?
     let symbol: String?
     let latestPrice: Double?
     let change: Double?
+    var currency: String?
 }
 
 struct CompanyLogo: Decodable {
