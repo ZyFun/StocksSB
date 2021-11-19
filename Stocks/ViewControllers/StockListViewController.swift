@@ -50,8 +50,8 @@ class StockListViewController: UITableViewController {
 }
 
 // MARK: - Private method
-extension StockListViewController {
-    @objc private func getStocks() {
+private extension StockListViewController {
+    @objc func getStocks() {
         let token = Token.publicKey.rawValue
         
         title = "Gainers stocks"
@@ -108,13 +108,13 @@ extension StockListViewController {
         }
     }
     
-    private func setupRefreshControl() {
+    func setupRefreshControl() {
         refreshControl = UIRefreshControl() // Конспект: инициализация refreshControl для его активации в интерфейсе
         refreshControl?.attributedTitle = NSAttributedString(string: "Loading data")
         refreshControl?.addTarget(self, action: #selector(getStocks), for: .valueChanged) // Конспект: self, класс в котором должно произойти действие при взаимодействии с элементом интерфейса.
     }
     
-    private func setActivityIndicator(in view: UIView, for activityIndicator: inout UIActivityIndicatorView){
+    func setActivityIndicator(in view: UIView, for activityIndicator: inout UIActivityIndicatorView){
         
         //        activityIndicator.center = view.center // тоже самое что и ручная настройка, но без фрейма
         activityIndicator = UIActivityIndicatorView(frame: CGRect(x: view.frame.width / 2 - 50,
