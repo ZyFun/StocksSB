@@ -39,17 +39,12 @@ class NetworkService {
             
             guard let response = response else { return }
             
-            if let data = data,
-               error == nil {
-                
-                DispatchQueue.main.async {
-                    completion(.success((data, response)))
-                }
-                
+            if let data = data, error == nil {
+                completion(.success((data, response)))
             } else {
                 guard let error = error else { return }
                 completion(.failure(.noData))
-                print(error.localizedDescription + "#www")
+                print(error.localizedDescription)
                 return
             }
             
